@@ -19,7 +19,7 @@ const ReceiptScanner: React.FC = () => {
           // Tesseract.js로 이미지 텍스트 추출
           const result = await Tesseract.recognize(
             imageSrc,
-            "ko", // OCR을 위한 언어 설정 (영어)
+            "eng", // OCR을 위한 언어 설정 (영어)
             {
               logger: (m) => console.log(m), // 진행 상황 로깅
             }
