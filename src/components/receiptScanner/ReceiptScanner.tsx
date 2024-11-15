@@ -19,7 +19,7 @@ const ReceiptScanner: React.FC = () => {
           // Tesseract.js로 이미지 텍스트 추출
           const result = await Tesseract.recognize(
             imageSrc,
-            "eng", // OCR을 위한 언어 설정 (영어)
+            "kor", // OCR을 위한 언어 설정 (영어)
             {
               logger: (m) => console.log(m), // 진행 상황 로깅
             }
@@ -41,7 +41,8 @@ const ReceiptScanner: React.FC = () => {
         audio={false}
         ref={webcamRef}
         screenshotFormat="image/jpeg"
-        width="100%"
+        width="480"  // 카메라 비디오의 가로 크기 설정
+        height="auto"
         videoConstraints={{
           facingMode: "environment", // 후면 카메라 사용
         }}
