@@ -1,38 +1,23 @@
 'use client';
 import React, { useRef, useState } from "react";
 import Webcam from "react-webcam";
-import Tesseract from "tesseract.js";
 
 const ReceiptScanner: React.FC = () => {
   const webcamRef = useRef<any>(null);
   const [isProcessing, setIsProcessing] = useState(false);
   const [ocrResult, setOcrResult] = useState<string | null>(null);
+  const [url, setUrl] = React.useState(null);
 
-  // 카메라로 캡처한 이미지를 OCR 처리하는 함수
-  const captureAndProcessImage = async () => {
-    if (webcamRef.current) {
-      // 웹캠에서 이미지 캡처
-      const imageSrc = webcamRef.current.getScreenshot();
-      if (imageSrc) {
-        setIsProcessing(true);
-        try {
-          // Tesseract.js로 이미지 텍스트 추출
-          const result = await Tesseract.recognize(
-            imageSrc,
-            "kor", // OCR을 위한 언어 설정 (영어)
-            {
-              logger: (m) => console.log(m), // 진행 상황 로깅
-            }
-          );
-          setOcrResult(result.data.text); // OCR 결과를 상태에 저장
-        } catch (error) {
-          console.error("OCR 처리 중 오류 발생:", error);
-        } finally {
-          setIsProcessing(false);
-        }
-      }
-    }
+  const capturePhoto = React.useCallback(async () => {
+    const imageSrc = webcamRef.current.getScreenshot();
+    setUrl(imageSrc);
+  }, [webcamRef]);
+
+  const onUserMedia = (e:any) => {
+    console.log(e);
   };
+
+
 
   return (
     <div>
@@ -43,11 +28,12 @@ const ReceiptScanner: React.FC = () => {
         screenshotFormat="image/jpeg"
         width="480"  // 카메라 비디오의 가로 크기 설정
         height="auto"
+        onUserMedia={onUserMedia}
         videoConstraints={{
           facingMode: "environment", // 후면 카메라 사용
         }}
       />
-      <button onClick={captureAndProcessImage} disabled={isProcessing}>
+      <button onClick={capturePhoto} disabled={isProcessing}>
         {isProcessing ? "처리 중..." : "이미지 캡처 및 분석"}
       </button>
       {ocrResult && (
