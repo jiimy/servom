@@ -1,4 +1,5 @@
 import "./globals.css";
+import './layout.scss';
 import Head from "./head";
 
 export default function RootLayout({
@@ -7,9 +8,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="ko">
       <Head />
-      <body className={"app"}>{children}</body>
+      <body>
+        <main className="main">
+          <div className="mobile-view">
+            <div>
+              {children}
+            </div>
+          </div>
+        </main>
+      </body>
     </html>
   );
 }
