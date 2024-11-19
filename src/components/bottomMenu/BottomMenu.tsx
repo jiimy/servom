@@ -1,23 +1,32 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
+import s from './bottommenu.module.scss';
+import DragButton from '../button/DragButton';
+import Link from 'next/link';
 
 const BottomMenu = () => {
-  const [rotation, setRotation] = useState(0);
-
-  const handleDrag = (event: any) => {
-    const deltaX = event.movementX; // 마우스 이동량
-    setRotation((prev) => prev + deltaX * 0.5); // 각도 변경
-  };
 
   return (
-    <div
-      className="donut"
-      onMouseMove={handleDrag}
-      style={{ transform: `rotate(${rotation}deg)` }}
-    >
-      <div className="button">A</div>
-      <div className="button">B</div>
-      <div className="button">C</div>
+    <div className={s.bottom_menu}>
+      <ul>
+        <li>
+          <Link href="rank">랭킹</Link>
+        </li>
+        <li>
+          <Link href="/standby">등록대기</Link>
+        </li>
+        <li>
+          <DragButton />
+        </li>
+        <li>
+          <Link href="/favorite">내 즐겨찾기</Link>
+        </li>
+        <li>
+          <Link href="/mypage">
+            마이페이지
+          </Link>
+        </li>
+      </ul>
     </div>
   );
 };
