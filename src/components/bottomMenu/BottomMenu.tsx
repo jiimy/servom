@@ -4,6 +4,7 @@ import s from './bottommenu.module.scss';
 import DragButton from '../button/DragButton';
 import Link from 'next/link';
 
+// 경로로 하단메뉴 구분.
 const BottomMenu = () => {
 
   return (

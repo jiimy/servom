@@ -14,10 +14,12 @@ const DragButton = () => {
 
   const handleDragNavigation = () => {
     // router.push('/scan');
+    console.log('드래그');
   };
 
   const handleClickNavigation = () => {
     // router.push('/scan');
+    console.log('클릭');
   };
 
   // 드래그 시작
@@ -50,7 +52,7 @@ const DragButton = () => {
     setDragDistance(clampedDistance);
 
     // 드래그가 일정 범위 이상 넘어가면 링크로 이동
-    if (clampedDistance > 50) {
+    if (clampedDistance > 30) {
       handleDragNavigation(); // 드래그로 이동
     }
   };
@@ -80,17 +82,12 @@ const DragButton = () => {
       onTouchStart={handleMouseDown}
       onClick={handleClick} // 클릭 시 링크 이동
       style={{
-        padding: "20px 40px",
-        backgroundColor: "#4CAF50",
-        color: "white",
-        fontSize: "16px",
         cursor: "grab",
-        position: "relative",
-        transform: `translateY(${dragDistance}px)`, // 드래그 거리만큼 버튼을 위로 이동
+        transform: `translateY(-${dragDistance}px)`, // 드래그 거리만큼 버튼을 위로 이동
         transition: isDragging ? "none" : "transform 0.3s ease-out", // 드래그 중에는 애니메이션을 없애고, 종료 후 애니메이션 추가
       }}
     >
-      Click to Go to Another Link or Drag Up to Go to Link
+      아이콘
     </button>
   );
 };
