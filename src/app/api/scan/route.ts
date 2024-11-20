@@ -2,7 +2,8 @@ import axios from "axios";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
-   const timestamp = Date.now();
+  const { url } = await request.json();
+  const timestamp = Date.now();
 
   const response = await axios.post(
     `https://twjwgs8v3s.apigw.ntruss.com/custom/v1/36009/970b3951c1308c7b56de4e1698bea7174f7438473c1d22546a5352adba6b46e1/general`,
@@ -13,7 +14,7 @@ export async function POST(request: Request) {
             format: "png",
             name: "medium",
             data: null,
-            url: "https://i.postimg.cc/7ZYXkzgM/image.png",
+            url: url,
           },
         ],
         lang: "ko",

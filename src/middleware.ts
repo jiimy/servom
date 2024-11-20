@@ -5,9 +5,9 @@ export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   if (
-    pathname.startsWith("/mypage") &&
-    pathname.startsWith("/favorite") &&
-    pathname.startsWith("/standby") &&
+    (pathname.startsWith("/mypage") ||
+      pathname.startsWith("/favorite") ||
+      pathname.startsWith("/standby")) &&
     !request.cookies.get("session-id")
   ) {
     return NextResponse.redirect(new URL("/login", request.url));
