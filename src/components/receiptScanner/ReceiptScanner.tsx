@@ -38,6 +38,7 @@ const ReceiptScanner: React.FC = () => {
         />
       }
       <button onClick={() => setScan(true)}>사진 찍기</button>
+      <br/>
       <button onClick={capturePhoto} disabled={isProcessing}>
         {isProcessing ? "처리 중..." : "이미지 캡처 및 분석"}
       </button>
