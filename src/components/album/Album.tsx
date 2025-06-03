@@ -59,7 +59,7 @@ const Album: React.FC<AlbumProps> = ({ maxSelection = 10, onImagesSelected }) =>
         multiple
         style={{ display: 'none' }}
         // 아래 속성 추가
-        capture="environment" // 일부 브라우저에서 갤러리 우선
+        capture="user" // 일부 브라우저에서 갤러리 우선
       />
 
       {/* 앨범 열기 버튼 */}
