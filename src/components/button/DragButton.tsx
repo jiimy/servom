@@ -13,7 +13,7 @@ const DragButton = () => {
   const maxDragHeight = 50;
 
   const handleDragNavigation = () => {
-    // router.push('/scan');
+    router.push('/scan');
     console.log('드래그');
   };
 
