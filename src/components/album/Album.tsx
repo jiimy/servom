@@ -14,6 +14,7 @@ const Album = () => {
     if (scrollY) {
       window.scrollTo(0, Number(scrollY));
     }
+    // 파일 선택창(앨범) 열기
     fileInputRef.current?.click();
   };
 
@@ -37,6 +38,7 @@ const Album = () => {
         accept="image/*"
         style={{ display: 'none' }}
         onChange={handleFileChange}
+      // capture 속성 없이 앨범/사진 선택만 가능 (카메라 바로 열리지 않음)
       />
     </div>
   );
